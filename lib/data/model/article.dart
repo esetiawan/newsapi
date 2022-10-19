@@ -1,4 +1,3 @@
-
 import 'package:newsapi/data/model/source.dart';
 
 class Article {
@@ -23,24 +22,25 @@ class Article {
   String content;
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
-    source: Source.fromJson(json["source"]),
-    author: json["author"],
-    title: json["title"],
-    description: json["description"],
-    url: json["url"],
-    urlToImage: json["urlToImage"],
-    publishedAt: DateTime.parse(json["publishedAt"]),
-    content: json["content"] == null ? null : json["content"],
-  );
+        source: Source.fromJson(json["source"]),
+        author: json["author"] ?? "",
+        title: json["title"] ?? "",
+        description: json["description"] ?? "",
+        url: json["url"],
+        urlToImage: json["urlToImage"] ??
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/1280px-Gull_portrait_ca_usa.jpg",
+        publishedAt: DateTime.parse(json["publishedAt"]),
+        content: json["content"] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-    "source": source.toJson(),
-    "author": author,
-    "title": title,
-    "description": description,
-    "url": url,
-    "urlToImage": urlToImage,
-    "publishedAt": publishedAt.toIso8601String(),
-    "content": content == null ? null : content,
-  };
+        "source": source.toJson(),
+        "author": author,
+        "title": title,
+        "description": description,
+        "url": url,
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt.toIso8601String(),
+        "content": content == null ? null : content,
+      };
 }

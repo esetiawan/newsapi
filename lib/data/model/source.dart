@@ -13,19 +13,20 @@ class Source {
 
  */
   dynamic id;
-  String name="";
+  String name = "";
   factory Source.fromJson(Map<String, dynamic> json) {
-    if (json["id"]!=null && json["name"]!=null) {
+    if (json["id"] != null && json["name"] != null) {
       return Source(
         id: json["id"],
         name: json["name"],
-      )
+      );
     }
-    else return Source("","")
-  };
+
+    return Source(id: "", name: '');
+  }
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-  };
+        "id": id,
+        "name": name,
+      };
 }
