@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../data/model/article.dart';
+import '../../data/model/article.dart';
 import 'package:provider/provider.dart';
-import '../provider/newsprovider.dart';
-import '../ui/detail_news.dart';
+import '../../provider/newsprovider.dart';
+import 'detail_news.dart';
 class NewsListPage extends StatelessWidget {
   const NewsListPage({Key? key}):super(key:key);
   Widget _buildList() {

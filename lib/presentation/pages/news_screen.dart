@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../data/model/article.dart';
-import '../data/api/apiservice.dart';
-import '../provider/newsprovider.dart';
+import '../../data/model/article.dart';
+import '../../data/api/apiservice.dart';
+import '../../provider/newsprovider.dart';
 import 'package:provider/provider.dart';
-import '../ui/newslistpage.dart';
+import 'newslistpage.dart';
 
 class NewsScreen extends StatefulWidget {
   static const routeName='/article_list';

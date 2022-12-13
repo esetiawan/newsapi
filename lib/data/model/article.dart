@@ -1,7 +1,8 @@
 
+import 'package:equatable/equatable.dart';
 import 'package:newsapi/data/model/source.dart';
 
-class Article {
+class Article extends Equatable {
   Article({
     required this.source,
     required this.author,
@@ -24,13 +25,13 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
     source: Source.fromJson(json["source"]),
-    author: json["author"],
+    author: json["author"] == null ? "" : json["author"],
     title: json["title"],
-    description: json["description"],
+    description: json["description"]== null ? "" : json["description"],
     url: json["url"],
-    urlToImage: json["urlToImage"],
+    urlToImage: json["urlToImage"]== null ? "https://bitsofco.de/content/images/2018/12/broken-1.png" : json["urlToImage"],
     publishedAt: DateTime.parse(json["publishedAt"]),
-    content: json["content"] == null ? null : json["content"],
+    content: json["content"] == null ? "" : json["content"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -41,6 +42,10 @@ class Article {
     "url": url,
     "urlToImage": urlToImage,
     "publishedAt": publishedAt.toIso8601String(),
-    "content": content == null ? null : content,
+    "content": content == null ? "" : content,
   };
+
+  @override
+  List<Object?> get props => [source,author,title,
+    description,url,urlToImage,publishedAt,content];
 }

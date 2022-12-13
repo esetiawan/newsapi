@@ -34,6 +34,7 @@ class NewsProvider extends ChangeNotifier{
     } catch(e) {
       _state = ResultState.error;
       notifyListeners();
+      rethrow;
       return _message='Error ---> $e';
     }
   }

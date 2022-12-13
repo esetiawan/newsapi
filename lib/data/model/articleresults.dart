@@ -4,12 +4,14 @@
 
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 import 'article.dart';
 ArticleResults articleResultsFromJson(String str) => ArticleResults.fromJson(json.decode(str));
 
 String articleResultsToJson(ArticleResults data) => json.encode(data.toJson());
 
-class ArticleResults {
+class ArticleResults extends Equatable {
   ArticleResults({
     required this.status,
     required this.totalResults,
@@ -33,6 +35,15 @@ class ArticleResults {
     "totalResults": totalResults,
     "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
   };
+  ArticleResults toEntity() {
+    return ArticleResults(
+        status: status,
+        totalResults: totalResults,
+        articles: articles);
+  }
+  @override
+  // TODO: implement props
+  List<Object?> get props => [status,totalResults,articles];
 }
 
 

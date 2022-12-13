@@ -32,6 +32,10 @@ dependencies:
   google_fonts: ^2.1.0
   http: 0.13.5
   provider: 6.0.4
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.3
+  dartz: ^0.10.1
+  webview_flutter: ^3.0.4
   flutter:
     sdk: flutter
 

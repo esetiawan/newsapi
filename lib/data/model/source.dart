@@ -19,10 +19,10 @@ class Source {
       return Source(
         id: json["id"],
         name: json["name"],
-      )
+      );
     }
-    else return Source("","")
-  };
+    else return Source(id:"", name: '');
+  }
 
   Map<String, dynamic> toJson() => {
     "id": id,
