@@ -22,7 +22,7 @@ class NewsSearchBloc extends Bloc<NewsSearchEvent, NewsSearchState> {
           });
           emit(resultState);
         },(data) async{
-          if (data.isNotEmpty) {
+          if (data.articles.isNotEmpty) {
             final resultState = NewsSearchHasData(data);
             emit(resultState);
           }
@@ -31,6 +31,9 @@ class NewsSearchBloc extends Bloc<NewsSearchEvent, NewsSearchState> {
           }
         });
       }
-    });
+    },transformer: debounce(const Duration(milliseconds: 500)));
+  }
+  EventTransformer<NewsSearchEvent> debounce<NewsSearchEvent> (Duration duration) {
+    return (events,mapper)=>events.debounceTime(duration).flatMap(mapper);
   }
 }
