@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
                   )
               )
           ),
-          initialRoute: NewsScreen.routeName,
+          initialRoute: NewsScreenSearch.routeName,
           routes: {
             NewsScreen.routeName: (context)=>const NewsScreen(),
             NewsScreenSearch.routeName: (context)=>const NewsScreenSearch(),
