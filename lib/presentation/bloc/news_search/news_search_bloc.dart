@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapi/data/model/articleresults.dart';
-
+import 'package:rxdart/rxdart.dart';
 import '../../../domain/usecases/search_news.dart';
 part 'news_search_event.dart';
 part 'news_search_state.dart';

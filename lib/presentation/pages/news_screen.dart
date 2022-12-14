@@ -5,23 +5,17 @@ import '../../provider/newsprovider.dart';
 import 'package:provider/provider.dart';
 import 'newslistpage.dart';
 
-class NewsScreen extends StatefulWidget {
-  static const routeName='/article_list';
-  const NewsScreen({Key? key}):super(key:key);
+class NewsScreenSearch extends StatefulWidget {
+  static const routeName='/article_search_list';
+  const NewsScreenSearch({Key? key}):super(key:key);
   @override
-  State<NewsScreen> createState() => _NewsScreenState();
+  State<NewsScreenSearch> createState() => _NewsScreenSearchState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
+class _NewsScreenSearchState extends State<NewsScreenSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-        ChangeNotifierProvider<NewsProvider>(
-          create: (_)=>NewsProvider(apiService: ApiService(),country:'id',
-              category:'business'),
-          child: const NewsListPage(),
-        )
-    );
+        body: const NewsSearchListPage());
   }
 }
