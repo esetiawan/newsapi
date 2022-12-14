@@ -51,7 +51,11 @@ class NewsSearchListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:_buildList(),
+      body:Container(
+        width: 300,
+          height: 300,
+          child: _buildList()
+      ),
     );
   }
 }

@@ -4,12 +4,13 @@ import 'package:newsapi/presentation/bloc/news_search/news_search_bloc.dart';
 import 'package:newsapi/presentation/pages/more_news.dart';
 import 'package:newsapi/presentation/pages/news_search_screen.dart';
 import 'package:provider/provider.dart';
-import 'presentation/pages/news_screen.dart';
-import 'presentation/pages/detail_news.dart';
-import 'presentation/pages/newslistpage.dart';
-import '../data/model/article.dart';
+
 import '../commons/styles.dart';
+import '../data/model/article.dart';
 import 'injection.dart' as di;
+import 'presentation/pages/detail_news.dart';
+import 'presentation/pages/news_screen.dart';
+
 void main() {
   di.init();
   runApp(const MyApp());
@@ -22,17 +23,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        BlocProvider(create: (_)=>di.locator<NewsSearchBloc>())
-      ],
+      providers: [BlocProvider(create: (_) => di.locator<NewsSearchBloc>())],
       child: MaterialApp(
           title: 'News App',
           theme: ThemeData(
               colorScheme: Theme.of(context).colorScheme.copyWith(
-                primary: primaryColor,
-                onPrimary: Colors.black,
-                secondary: secondaryColor,
-              ),
+                    primary: primaryColor,
+                    onPrimary: Colors.black,
+                    secondary: secondaryColor,
+                  ),
               scaffoldBackgroundColor: Colors.white,
               // This is the theme of your application.
               //
@@ -52,23 +51,17 @@ class MyApp extends StatelessWidget {
                       onPrimary: Colors.white,
                       textStyle: const TextStyle(),
                       shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(0))
-                      )
-                  )
-              )
-          ),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(0)))))),
           initialRoute: NewsScreenSearch.routeName,
           routes: {
-            NewsScreen.routeName: (context)=>const NewsScreen(),
-            NewsScreenSearch.routeName: (context)=>const NewsScreenSearch(),
+            NewsScreen.routeName: (context) => const NewsScreen(),
+            NewsScreenSearch.routeName: (context) => const NewsScreenSearch(),
             DetailNewsScreen.routeName: (context) => DetailNewsScreen(
-                article: ModalRoute.of(context)?.settings.arguments as Article
-            ),
-            MoreNewsScreen.routeName: (context) => MoreNewsScreen(url:
-            ModalRoute.of(context)?.settings.arguments as String
-            ),
-          }
-      ),
+                article: ModalRoute.of(context)?.settings.arguments as Article),
+            MoreNewsScreen.routeName: (context) => MoreNewsScreen(
+                url: ModalRoute.of(context)?.settings.arguments as String),
+          }),
     );
   }
 }
