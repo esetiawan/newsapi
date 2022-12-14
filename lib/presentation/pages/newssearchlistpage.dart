@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newsapi/presentation/bloc/news_search/news_search_bloc.dart';
 import '../../data/model/article.dart';
 import 'package:provider/provider.dart';
 import '../../provider/newsprovider.dart';
@@ -6,24 +8,34 @@ import 'detail_news.dart';
 class NewsSearchListPage extends StatelessWidget {
   const NewsSearchListPage({Key? key}):super(key:key);
   Widget _buildList() {
-    return Consumer<NewsProvider>(
-        builder: (context,state,_) {
-          if(state.state==ResultState.loading) {
+    return BlocBuilder<NewsSearchBloc,NewsSearchState>(
+        builder: (context,state) {
+          if(state is NewsSearchLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-          else if (state.state==ResultState.hasData) {
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: state.result.articles.length,
-                itemBuilder: (context,index) {
-                  return _buildArticleItem(context, state.result.articles[index]);
-                });
+          else if (state is NewsSearchHasData) {
+            final result = state.data;
+            return Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: result.articles.length,
+                  itemBuilder: (context,index) {
+                    return _buildArticleItem(context, result.articles[index]);
+                  }),
+            );
           }
-          else if (state.state==ResultState.noData || state.state==ResultState.error) {
+          else if (state is NewsSearchError ) {
             return Center(
-                child: Material(
+                child: state.retry==null?Material(
                   child: Text(state.message),
+                ):Material(
+                  child: Text(state.message+",retry:"+state.retry.toString()),
                 )
+            );
+          }
+          else if (state is NewsSearchEmpty) {
+            return Center(
+                child: Text(state.message),
             );
           }
           else {

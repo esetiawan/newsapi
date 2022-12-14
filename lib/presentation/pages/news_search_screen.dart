@@ -29,6 +29,12 @@ class _NewsScreenSearchState extends State<NewsScreenSearch> {
                 onChanged: (query) {
                   context.read<NewsSearchBloc>().add(OnQueryNewsChanged(query));
                 },
+                decoration: InputDecoration(
+                  hintText: 'Search title',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                ),
+                textInputAction: TextInputAction.search,
               ),
               SizedBox(height:16),
               Text('Search Result'),
