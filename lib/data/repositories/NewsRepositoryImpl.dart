@@ -6,9 +6,10 @@ import 'package:newsapi/data/model/articleresults.dart';
 import 'package:newsapi/domain/repositories/NewsRepository.dart';
 
 import '../../commons/exception.dart';
+import '../datasources/news_remote_data_source.dart';
 
 class NewsRepositoryImpl implements NewsRepository{
-  final NewsRepositoryImpl remoteDataSource;
+  final NewsRemoteDataSourceImpl remoteDataSource;
   NewsRepositoryImpl({required this.remoteDataSource});
 
   @override
