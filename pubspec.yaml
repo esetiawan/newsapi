@@ -38,8 +38,11 @@ dependencies:
   rxdart: ^0.27.2
   get_it: ^7.1.3
   intl: ^0.17.0
-  bloc_test: ^9.1.0
   webview_flutter: ^3.0.4
+  image_picker: ^0.8.6
+  camera: ^0.10.0+5
+  gallery_saver: ^2.3.2
+  awesome_snackbar_content: ^0.1.0
   flutter:
     sdk: flutter
 
@@ -49,6 +52,9 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  mockito: ^5.0.8
+  build_runner: ^2.0.4
+  bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
 
