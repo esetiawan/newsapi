@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
@@ -49,11 +50,26 @@ class _LoadImageScreenState extends State<LoadImageScreen> {
               children: [
                 ElevatedButton.icon(onPressed: () async{
                   await getImage();
-
+                  final snackBar = SnackBar(
+                    elevation:0,
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor: Colors.transparent,
+                    content: AwesomeSnackbarContent(
+                      title: 'Yeey!',
+                      message: 'Foto berhasil tersimpan',
+                      contentType: ContentType.success,
+                    ),
+                  );
+                  ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar);
                 },icon: Icon(Icons.save),label: Text("Save to Gallery"),
                     style: ElevatedButton.styleFrom(primary: Colors.purple,onPrimary: Colors.white)
                 )
               ],
+            ),
+            Container(
+              padding: EdgeInsets.all(30),
+              child: imageTerambil==null?Text("No Image Saved"):
+                Image.file(imageTerambil!),height:300,
             )
           ],
         )
